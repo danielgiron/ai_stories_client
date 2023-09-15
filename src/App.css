@@ -7,7 +7,7 @@
     "Footer Footer Footer Footer Footer";
   min-height: 100vh;
   width: 100vw;
-  background-color: red;
+  background-color: #fcfcfc;
 
   font-family: LeagueSpartan;
   /* font-family: Southpaw; */
@@ -17,7 +17,7 @@
 .GridLayout {
   display: grid;
   grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
-  gap: 1rem;
+  /* gap: 1rem; */
 }
 
 .App .HeroSection {
@@ -26,13 +26,13 @@
 
 .App .PageContent {
   grid-area: PageContent;
-  background-color: aqua;
+  /* background-color: aqua; */
   height: 50vh;
 }
 
 .App #Footer {
   grid-area: Footer;
-  background-color: blue;
+  /* background-color: blue; */
   height: 200px;
 }
 
