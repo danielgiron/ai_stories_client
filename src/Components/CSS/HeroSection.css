@@ -1,0 +1,12 @@
+.HeroSection {
+  grid-template-areas: ". HeroContainer HeroContainer HeroContainer .";
+  height: 500px;
+  width: 100% !important;
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0) 83.33%, #fff 100%),
+    linear-gradient(164deg, #e9ecf2 24.46%, #f8fafc 74.08%);
+}
+
+#HeroContainer {
+  grid-area: HeroContainer;
+  background-color: magenta;
+}

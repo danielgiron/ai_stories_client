@@ -143,3 +143,20 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+/* FONTS */
+
+@font-face {
+  font-family: "LeagueGothic";
+  src: url("./Media/Fonts/LeagueGothic-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "LeagueSpartan";
+  src: url("./Media/Fonts/LeagueSpartan-VF.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Southpaw";
+  src: url("./Media/Fonts/southpaw-webfont.woff") format("woff");
+}
