@@ -3,8 +3,8 @@ import "../CSS/Footer.css";
 
 function Footer(props) {
   return (
-    <div id="Footer">
-      <div>Footer</div>
+    <div className="FooterContainer">
+      <footer id="Footer">Footer</footer>
     </div>
   );
 }

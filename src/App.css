@@ -1,38 +1,54 @@
 .App {
   position: relative;
 
-  grid-template-areas:
-    "Hero Hero Hero Hero Hero"
-    ". PageContent PageContent PageContent ."
-    "Footer Footer Footer Footer Footer";
   min-height: 100vh;
   width: 100vw;
   background-color: #fcfcfc;
 
   font-family: LeagueSpartan;
-  /* font-family: Southpaw; */
   font-weight: 300;
 }
 
-.GridLayout {
+/**************************************************  */
+.BodyContainer {
+  display: grid;
+  grid-template-areas:
+    "HeroContainer"
+    "AssessmentsContainer"
+    "ResultsContainer";
+}
+
+.BodyContainer .AssessmentsContainer {
+  grid-area: AssessmentsContainer;
   display: grid;
   grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
-  /* gap: 1rem; */
+  grid-template-areas: ". Assessments Assessments Assessments .";
+  background-color: red;
 }
 
-.App .HeroSection {
-  grid-area: Hero;
-}
-
-.App .PageContent {
-  grid-area: PageContent;
-  /* background-color: aqua; */
+.AssessmentsContainer .Assessments {
+  grid-area: Assessments;
   height: 50vh;
+  background-color: pink;
 }
 
+.BodyContainer .ResultsContainer {
+  grid-area: ResultsContainer;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
+  grid-template-areas: ". Results Results Results .";
+  background-color: purple;
+}
+
+.ResultsContainer .Results {
+  grid-area: Results;
+  height: 50vh;
+
+  background-color: fuchsia;
+}
+
+/**************************************************  */
 .App #Footer {
-  grid-area: Footer;
-  /* background-color: blue; */
   height: 200px;
 }
 

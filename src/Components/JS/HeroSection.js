@@ -1,10 +1,10 @@
 import React from "react";
-import "../CSS/HeroSection.css";
+import "../CSS/Hero.css";
 
 function HeroSection(props) {
   return (
-    <section className="HeroSection GridLayout">
-      <div id="HeroContainer">Hero Section</div>
+    <section className="HeroContainer">
+      <div id="Hero">Hero Section</div>
     </section>
   );
 }

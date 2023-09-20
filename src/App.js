@@ -7,11 +7,12 @@ import HeroSection from "./Components/JS/HeroSection";
 
 function App() {
   return (
-    <div className="App GridLayout">
+    <div className="App ">
       <TopNav />
-      <HeroSection />
+      {/* <HeroSection /> */}
+
       <AnimatedRoutes />
-      {/* <GPT_Console /> */}
+
       <Footer />
     </div>
   );
