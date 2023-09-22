@@ -1,5 +1,6 @@
 #TopNav {
-  --color-main: #fff;
+  --color-main: #000;
+  --color-secondary: #fff;
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +12,7 @@
   grid-template-areas: ". navContainer navContainer navContainer .";
   align-content: center;
   /* background-color: red; */
-  mix-blend-mode: screen;
+  /* mix-blend-mode: multiply; */
 }
 
 #TopNavContainer {
@@ -25,6 +26,7 @@
 #TopNav #Logo {
   display: flex;
   align-items: center;
+  color: var(--color-main);
   letter-spacing: 5px;
   height: 100%;
 }
@@ -119,7 +121,7 @@
   text-decoration: none;
   width: max-content;
   padding: 0.6rem 0.8rem 0.3rem 0.8rem;
-  color: #fefefe;
+  color: var(--color-secondary);
   background-color: var(--color-main);
   border-radius: 1rem;
 }
