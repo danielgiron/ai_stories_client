@@ -1,0 +1,128 @@
+.GPT_Console {
+  width: 100vw;
+  height: 100vh;
+
+  grid-template-areas: ". Console Console Console .";
+  background: radial-gradient(
+    180.65% 133.03% at 67.68% -13.15%,
+    #a22929 0%,
+    #3a0c50 100%
+  );
+}
+
+.GPT_Console form {
+  margin-top: 5rem;
+  grid-area: Console;
+  width: 100%;
+  height: 80vh;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 35vh 35vh 30px;
+  grid-template-areas: "Side Messages" "Side Messages" "Side Input";
+  column-gap: 2rem;
+  row-gap: 1rem;
+
+  color: rgb(237, 208, 180);
+}
+
+.GPT_Console form .Side {
+  grid-area: Side;
+}
+
+.GPT_Console form .SideButtons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+.GPT_Console form .Side button {
+  flex-grow: 1;
+  padding: calc(0.75rem + 3px) 1.5rem 0.75rem 1.5rem;
+  color: rgb(237, 208, 180);
+  font-family: LeagueSpartan;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #c34040;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.GPT_Console form .Side button:first-child {
+  background-color: #c34040;
+}
+
+.GPT_Console form .InputField {
+  grid-area: Input;
+}
+
+.GPT_Console form .MessagesContainer {
+  grid-area: Messages;
+  padding: 1.5rem 0rem;
+  overflow-y: scroll;
+  mix-blend-mode: color-dodge;
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+}
+
+.GPT_Console form .MessagesContainer .Message .role {
+  display: none;
+}
+
+.GPT_Console form .MessagesContainer .Message.User {
+  margin: 1rem;
+  padding: calc(0.5rem + 3px) 1rem 0.5rem 1rem;
+  border: 1px solid rgb(245, 135, 0);
+  border-radius: 0.5rem;
+  font-style: italic;
+}
+
+.GPT_Console .InputField {
+  display: grid;
+  height: 60px;
+  grid-template-columns: 1fr 60px;
+  gap: 1rem;
+  filter: drop-shadow(0px 3px 12px rgba(36, 32, 44, 0.513));
+}
+
+.GPT_Console .InputField input {
+  background-color: #332e2c;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: rgb(165, 165, 165);
+  font-size: 0.99rem;
+  font-style: italic;
+  font-family: LeagueSpartan;
+  outline: none;
+}
+
+.GPT_Console .InputField button {
+  border: none;
+  border-radius: 0.5rem;
+  color: rgb(237, 208, 180);
+  background-color: #c34040;
+  cursor: pointer;
+}
+
+.GPT_Console .Inactive {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.GPT_Console + .FooterContainer {
+  display: none;
+}
