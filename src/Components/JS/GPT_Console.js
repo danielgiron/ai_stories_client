@@ -7,31 +7,21 @@ import axios from "axios";
 
 function GPT_Console(props) {
   const endpoint = "http://localhost:3001";
-  //  Where you left off:
-  // Now storing Entry in localStorage using res.data.id as Key and storing { id, created, total_tokens, and [messages] }
-  // DONE With Entry in localStorage, generate Entry buttons in the Results section of the Home page.
-  // DONE On opening with EntryID prop, load Entry from localStorage and load onto [messages]
-  // DONE? Work on a fix for automatically loading [messages] with the starting prompt below
-  // DONE Work on removing ". Tell me four more sentences of story" from each user input message.
-  // DONE Still need to make the Side "Back" button a react-router-dom Link object
-  // DONE Might need to identify where exactly user message inout is being stored into [messages]
-  // // -> Line 42. On OpenAI API successful response, go to [messages - 1(2?)] and trim the phrase off.
-  // Fix issue with new Entry (unique ID) showing up in Results container
-  // Fix issue with each completion coming back with own unique ID.
-  // // -> Assign UUID?
-  // BUG: STARTING A NEW STORY (WITH NO URL 'ID' PARAM) KEEPS SAVING EACH API RESPONSE IN NEW THREAD.
-  //      CONTINUING EXISTING THREAD WITH 'ID" URL PARAM DOES TRIGGER SAME ISSUE. LOOK AT LINES 26-29
 
+  const navigate = useNavigate();
   let { ID_Param } = useParams();
   let EntryID = ID_Param;
+
+  // If no EntryID provided on launch (through URL parameters), assign new EntryID
   if (!EntryID) {
-    // If no EntryID provided on launch (through URL parameters), assign new EntryID
     EntryID = uuidv4();
   }
 
-  const navigate = useNavigate();
-  const SavedEntries = JSON.parse(localStorage.getItem("SavedEntries"));
+  // SavedEntries is a "directory" of Entries saved in localStorage
+  let SavedEntries = JSON.parse(localStorage.getItem("SavedEntries"));
+  // userInput holds the value of html input element where user types responses
   const [userInput, setUserInput] = useState("");
+  // inputActive is toggle on and off to control when user is able to use input element
   const [inputActive, setInputActive] = useState(true);
   const [messages, setMessages] = useState([
     {
@@ -102,6 +92,16 @@ function GPT_Console(props) {
     setInputActive(true);
   }
 
+  function deleteStory() {
+    window.confirm(`Are you sure you wish to delete this entry?`);
+    localStorage.removeItem(EntryID);
+    SavedEntries = SavedEntries.filter((id) => {
+      return id !== EntryID;
+    });
+    localStorage.setItem("SavedEntries", JSON.stringify(SavedEntries));
+    navigate("/");
+  }
+
   useEffect(() => {
     // Change TopNav styles to fit GPT_Console Theme
     const Logo = document.getElementById("Logo");
@@ -146,16 +146,37 @@ function GPT_Console(props) {
             You will be presented with an unknown scenario. You decide how to
             advance the story.
           </p>
-          <div className="SideButtons">
-            <button className={`${messages.length > 0 ? "Inactive" : ""}`}>
+          <div className="ButtonGroup1">
+            <button
+              type="button"
+              className={`${messages.length > 0 ? "Inactive" : ""}`}
+            >
               Start
             </button>
             <button
+              type="button"
               onClick={() => {
                 navigate(-1);
               }}
             >
               Back
+            </button>
+          </div>
+          <p>Ready for an evaluation, or are you tired of this story?</p>
+          <div className="ButtonGroup2">
+            <button
+              type="button"
+              className={`${messages.length > 0 ? "Inactive" : ""}`}
+            >
+              Assess
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                deleteStory();
+              }}
+            >
+              Delete
             </button>
           </div>
         </div>
@@ -176,6 +197,7 @@ function GPT_Console(props) {
             value={userInput}
           />
           <button
+            type="submit"
             id="gptButton"
             className={`${userInput === "" ? "inactive" : "active"}`}
             onClick={() => {
