@@ -1,4 +1,5 @@
 .GPT_Console {
+  --primary-color: #6f3145;
   width: 100vw;
   height: 100vh;
 
@@ -23,15 +24,27 @@
   column-gap: 2rem;
   row-gap: 1rem;
 
-  color: rgb(237, 208, 180);
+  color: #edd0b4;
 }
 
 .GPT_Console form .Side {
   grid-area: Side;
+  filter: drop-shadow(0px 3px 12px rgba(36, 32, 44, 0.513));
 }
 
 .GPT_Console form .Side p:nth-of-type(2) {
   margin-top: 1.5rem;
+}
+
+.GPT_Console .SubGroup {
+  background-color: #542534;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.GPT_Console .SubGroup:first-child {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .GPT_Console form .ButtonGroup1,
@@ -47,13 +60,13 @@
   font-family: LeagueSpartan;
   font-size: 1rem;
   border-radius: 0.5rem;
-  border: 1px solid #c34040;
+  border: 1px solid var(--primary-color);
   background-color: transparent;
   cursor: pointer;
 }
 
-.GPT_Console form .Side button:first-child {
-  background-color: #c34040;
+.GPT_Console form .Side button.CTA {
+  background-color: var(--primary-color);
 }
 
 .GPT_Console form .InputField {
@@ -61,6 +74,7 @@
 }
 
 .GPT_Console form .MessagesContainer {
+  z-index: 0;
   grid-area: Messages;
   padding: 1.5rem 0rem;
   overflow-y: scroll;
@@ -95,11 +109,13 @@
 }
 
 .GPT_Console .InputField {
+  position: relative;
   display: grid;
   height: 60px;
   grid-template-columns: 1fr 60px;
   gap: 1rem;
   filter: drop-shadow(0px 3px 12px rgba(36, 32, 44, 0.513));
+  z-index: 1;
 }
 
 .GPT_Console .InputField input {
@@ -121,6 +137,31 @@
   color: rgb(237, 208, 180);
   background-color: #c34040;
   cursor: pointer;
+}
+
+.GPT_Console #ToastContainer {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: calc(1rem + 3px) 1.5rem 1rem 1.5rem;
+
+  color: #edd0b4;
+  background-color: #332e2c;
+  border: 1px solid #595249;
+  border-radius: 0.5rem;
+  opacity: 0;
+
+  transition: all 200ms;
+
+  pointer-events: none;
+}
+
+.GPT_Console #ToastContainer.Alert {
+  transform: translateY(-150%) translateX(-50%);
+  opacity: 1;
 }
 
 .GPT_Console .Inactive {

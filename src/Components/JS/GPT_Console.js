@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { getPrompt } from "../../Prompts";
 
 import "../CSS/GPT_Console.css";
 import axios from "axios";
@@ -26,13 +27,7 @@ function GPT_Console(props) {
   const [messages, setMessages] = useState([
     {
       role: "system",
-      content: `As a storyteller, your job is build a (first-person) story. 
-      You are to provide four sentences worth of story each round, each round should present the player with complex scenario they must navigate. The player then gets to choose how to respond
-        to the story, don't explicitly state what their options are. 
-        There should be setbacks/plot-twists to engage players, a looming threat or danger. 
-        Don't use trademarked characters or names. 
-        The game concludes after 15-20 turns or upon reaching a resolution. 
-        If player response is nonsensical, re-direct them.`,
+      content: getPrompt("P0"),
     },
   ]);
 
@@ -43,6 +38,8 @@ function GPT_Console(props) {
   async function getStory() {
     setInputActive(false); // Disable input to prevent re-submission while loading
 
+    // {messages.length - 1 === 0} means "messages" is empty (story has not been started)
+    //  if messages are not empty, and story has started, add user input to messages (as response to AI generated story)
     if (messages.length - 1 !== 0) {
       messages.push({
         role: "user",
@@ -86,7 +83,7 @@ function GPT_Console(props) {
         }
       })
       .catch((e) => {
-        console.log(e);
+        ToastAlert("Oops...something went wrong! Try again soon :(");
       });
 
     setInputActive(true);
@@ -101,6 +98,16 @@ function GPT_Console(props) {
     localStorage.setItem("SavedEntries", JSON.stringify(SavedEntries));
     navigate("/");
   }
+
+  const ToastAlert = (text) => {
+    const ToastContainer = document.getElementById("ToastContainer");
+    ToastContainer.innerText = text;
+
+    ToastContainer.classList.add("Alert");
+    setTimeout(() => {
+      ToastContainer.classList.remove("Alert");
+    }, 5000);
+  };
 
   useEffect(() => {
     // Change TopNav styles to fit GPT_Console Theme
@@ -142,42 +149,59 @@ function GPT_Console(props) {
         }}
       >
         <div className="Side">
-          <p>
-            You will be presented with an unknown scenario. You decide how to
-            advance the story.
-          </p>
-          <div className="ButtonGroup1">
-            <button
-              type="button"
-              className={`${messages.length > 0 ? "Inactive" : ""}`}
-            >
-              Start
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                navigate(-1);
-              }}
-            >
-              Back
-            </button>
+          <div className="SubGroup">
+            <p>
+              You will be presented with an unknown scenario. You decide how to
+              advance the story.
+            </p>
+            <div className="ButtonGroup1">
+              <button
+                type="button"
+                onClick={() => {
+                  navigate(-1);
+                }}
+              >
+                Exit
+              </button>
+              <button
+                type="button"
+                className={`${messages.length > 1 ? "Inactive" : ""} CTA`}
+                onClick={() => {
+                  getStory();
+                }}
+              >
+                Start
+              </button>
+
+              <button
+                type="button"
+                className={`${messages.length > 1 ? "" : "Inactive"}`}
+                onClick={() => {
+                  deleteStory();
+                }}
+              >
+                Delete
+              </button>
+            </div>
           </div>
-          <p>Ready for an evaluation, or are you tired of this story?</p>
-          <div className="ButtonGroup2">
-            <button
-              type="button"
-              className={`${messages.length > 0 ? "Inactive" : ""}`}
-            >
-              Assess
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                deleteStory();
-              }}
-            >
-              Delete
-            </button>
+          <div className="SubGroup">
+            <p>Ready for an evaluation?</p>
+            <div className="ButtonGroup2">
+              <button
+                type="button"
+                className={`${messages.length === 1 ? "Inactive" : ""} CTA`}
+              >
+                Assess
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  ToastAlert("Oops...There's been an error :(");
+                }}
+              >
+                Toast
+              </button>
+            </div>
           </div>
         </div>
 
@@ -186,6 +210,7 @@ function GPT_Console(props) {
             inputActive || messages.length === 0 ? "" : "Inactive"
           }`}
         >
+          <div id="ToastContainer">Oops...There's been an error</div>
           <input
             type="text"
             placeholder="What do you do?"
@@ -228,14 +253,6 @@ function GPT_Console(props) {
               })}
         </div>
       </form>
-
-      {/* <button
-        onClick={() => {
-          console.log({ messages });
-        }}
-      >
-        console.log(messages)
-      </button> */}
     </div>
   );
 }
