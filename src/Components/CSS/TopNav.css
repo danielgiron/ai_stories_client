@@ -126,3 +126,15 @@
   background-color: var(--color-main);
   border-radius: 1rem;
 }
+
+@media (max-width: 800px) {
+  #TopNav {
+    grid-template-columns: auto;
+    grid-template-areas: "navContainer";
+  }
+
+  #TopNavContainer {
+    justify-self: center;
+    width: calc(100% - 2rem);
+  }
+}
