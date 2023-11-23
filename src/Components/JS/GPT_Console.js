@@ -92,6 +92,7 @@ function GPT_Console(props) {
     setInputActive(true);
   }
 
+  // After confirmation, remove EntryID from SavedEntries ("directory") and remove Entry from localStorage
   function deleteStory() {
     window.confirm(`Are you sure you wish to delete this entry?`);
     localStorage.removeItem(EntryID);
@@ -212,14 +213,15 @@ function GPT_Console(props) {
               >
                 Assess
               </button>
-              <button
+              {/* Used for testing error notifications */}
+              {/* <button
                 type="button"
                 onClick={() => {
                   ToastAlert("Oops...There's been an error :(");
                 }}
               >
                 Toast
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

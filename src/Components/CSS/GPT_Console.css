@@ -65,6 +65,10 @@
   cursor: pointer;
 }
 
+.GPT_Console form .Side button:hover {
+  filter: brightness(1.3);
+}
+
 .GPT_Console form .Side button.CTA {
   background-color: var(--primary-color);
 }
@@ -194,7 +198,6 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
     position: relative;
-    /* grid-template-areas: "Side" "Messages" "Input"; */
     grid-template-areas: "Messages" "Input";
   }
 
@@ -202,7 +205,6 @@
     grid-area: unset;
     position: absolute;
     z-index: 3;
-    /* background-color: red; */
     width: 100%;
     filter: drop-shadow(0px 3px 12px rgba(36, 32, 44, 0.513));
   }
@@ -215,7 +217,8 @@
   }
 
   .GPT_Console #Side_MobileVisibility:not(.Active) {
-    opacity: 0.7;
+    opacity: 0.5;
+    filter: brightness(1.2);
   }
 
   .GPT_Console #Side_MobileVisibility.Active + .SubGroup,
@@ -237,100 +240,14 @@
     transition: all 500ms;
   }
 
-  /* .GPT_Console .SubGroup:first-child {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  .GPT_Console .SubGroup:first-of-type {
+    background-color: #542534;
+    border: 1px solid #673e4b;
   }
 
-  .GPT_Console form .ButtonGroup1,
-  .GPT_Console form .ButtonGroup2 {
-    margin-top: 1rem;
-    display: flex;
-    gap: 1rem;
-  }
-  .GPT_Console form .Side button {
-    flex-grow: 1;
-    padding: calc(0.75rem + 3px) 1.5rem 0.75rem 1.5rem;
-    color: rgb(237, 208, 180);
-    font-family: LeagueSpartan;
-    font-size: 1rem;
-    border-radius: 0.5rem;
-    border: 1px solid var(--primary-color);
-    background-color: transparent;
-    cursor: pointer;
-  } */
-
-  /************************************************/
-
-  .GPT_Console form .MessagesContainer {
-    margin-top: 1rem;
-    z-index: 0;
-    grid-area: Messages;
-    padding: 1.5rem 0rem;
-    overflow-y: scroll;
-    mix-blend-mode: color-dodge;
-
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      black 5%,
-      black 95%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      black 5%,
-      black 95%,
-      transparent 100%
-    );
-  }
-
-  .GPT_Console form .MessagesContainer .Message .role {
-    display: none;
-  }
-
-  .GPT_Console form .MessagesContainer .Message.User {
-    margin: 1rem;
-    padding: calc(0.5rem + 3px) 1rem 0.5rem 1rem;
-    border: 1px solid rgb(245, 135, 0);
-    border-radius: 0.5rem;
-    font-style: italic;
-  }
-
-  /************************************************/
-  .GPT_Console form .InputField {
-    grid-area: Input;
-  }
-
-  .GPT_Console .InputField {
-    position: relative;
-    display: grid;
-    height: 60px;
-    grid-template-columns: 1fr 60px;
-    gap: 1rem;
-    filter: drop-shadow(0px 3px 12px rgba(36, 32, 44, 0.513));
-    z-index: 1;
-  }
-
-  .GPT_Console .InputField input {
-    background-color: #332e2c;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    color: rgb(165, 165, 165);
-    font-size: 0.99rem;
-    font-style: italic;
-    font-family: LeagueSpartan;
-    outline: none;
-  }
-
-  .GPT_Console .InputField button {
-    border: none;
-    border-radius: 0.5rem;
-    color: rgb(237, 208, 180);
-    background-color: #c34040;
-    cursor: pointer;
+  .GPT_Console .SubGroup:last-child {
+    color: #ded5cd;
+    background-color: #333031;
+    border: 1px solid rgb(70, 68, 68);
   }
 }
