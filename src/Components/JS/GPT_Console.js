@@ -18,6 +18,9 @@ function GPT_Console(props) {
     EntryID = uuidv4();
   }
 
+  // Used to control Side Panel visibility state on mobile devices
+  const [mobileVisibility, setMobileVisibility] = useState(true);
+
   // SavedEntries is a "directory" of Entries saved in localStorage
   let SavedEntries = JSON.parse(localStorage.getItem("SavedEntries"));
   // userInput holds the value of html input element where user types responses
@@ -149,6 +152,22 @@ function GPT_Console(props) {
         }}
       >
         <div className="Side">
+          {/* Only display button when window is not mobile device */}
+          {window.innerWidth >= 800 ? (
+            ""
+          ) : (
+            <button
+              type="button"
+              id="Side_MobileVisibility"
+              className={`${mobileVisibility ? "Active" : ""}`}
+              onClick={() => {
+                setMobileVisibility(!mobileVisibility);
+              }}
+            >
+              {`${mobileVisibility ? "Hide" : "Show"} Options`}
+            </button>
+          )}
+
           <div className="SubGroup">
             <p>
               You will be presented with an unknown scenario. You decide how to
