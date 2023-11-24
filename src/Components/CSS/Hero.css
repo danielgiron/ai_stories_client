@@ -60,3 +60,19 @@
   border-radius: 6rem;
   filter: drop-shadow(0px 15px 25px #6f8eac5f);
 }
+
+@media (max-width: 800px) {
+  .HeroContainer {
+    grid-template-areas: "Hero";
+    grid-template-columns: 1fr;
+    height: unset;
+  }
+
+  #Hero {
+    padding: 8rem 1rem;
+  }
+
+  .HeroText {
+    width: 100%;
+  }
+}

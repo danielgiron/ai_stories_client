@@ -16,7 +16,6 @@
   grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
 }
 
-/**************************************************  */
 .BodyContainer {
   display: grid;
   grid-template-areas:
@@ -24,6 +23,8 @@
     "AssessmentsContainer"
     "ResultsContainer";
 }
+
+/**************************************************  */
 
 .BodyContainer .AssessmentsContainer {
   grid-area: AssessmentsContainer;
@@ -102,12 +103,11 @@
 
 .ResultsContainer .Results {
   grid-area: Results;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding: 5rem 0rem;
 }
 
 .ResultEntryContainer {
-  margin-top: 1rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -127,8 +127,15 @@
   justify-content: center;
   padding-left: 1rem;
   height: 100%;
+
   border-radius: 0.5rem;
   background-color: #d5dee1;
+
+  color: #383c3d;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .ResultEntry button {
@@ -140,7 +147,65 @@
   cursor: pointer;
 }
 
+.ResultEntry button:hover {
+  filter: brightness(1.03);
+}
+
 /**************************************************  */
 .App #Footer {
   height: 200px;
+}
+
+@media (max-width: 800px) {
+  .GridContainer {
+    padding: 0rem 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  /*****************************************  */
+
+  .BodyContainer .AssessmentsContainer {
+    grid-template-areas: "Assessments";
+  }
+
+  .AssessmentsContainer .Assessments {
+    padding: 3rem 0rem;
+    height: unset;
+    width: calc(100vw - 2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .Assessments .Carousel {
+    display: flex;
+    flex-direction: row;
+    width: calc(100vw - 1rem);
+    margin-left: -1rem;
+    overflow-x: scroll;
+    -webkit-mask-image: unset;
+    mask-image: unset;
+  }
+
+  /*****************************************  */
+
+  .BodyContainer .ResultsContainer {
+    grid-template-areas: "Results";
+  }
+
+  .ResultsContainer .Results {
+    padding: 3rem 0rem;
+  }
+
+  .ResultEntry {
+    gap: 0rem;
+  }
+
+  .ResultEntryName {
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+
+  .ResultEntry button {
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
 }
