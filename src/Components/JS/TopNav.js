@@ -6,12 +6,13 @@ function TopNav(props) {
   const [navState, navStateToggle] = useState(false);
   return (
     <nav id="TopNav">
-      <div id="TopNavContainer">
+      <div id="TopNavContainer" className="GridLayout">
         <div id="Logo">
-          a<span>Irina</span>
+          The <span>Bugs</span>
         </div>
         <div
-          className={`Menu ${navState ? "Active" : ""}`}
+          id="NavMenu"
+          className={`${navState ? "Active" : ""}`}
           onClick={() => {
             navStateToggle(!navState);
           }}

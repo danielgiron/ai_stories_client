@@ -8,7 +8,7 @@ function HeroSection(props) {
       <div id="Hero">
         <div className="HeroText">
           <h1>
-            Mirrors of <span>Identity</span>
+            The <span>Bugs</span>
           </h1>
           <p>
             This site is a tribute to Irina and artificial intelligence, two

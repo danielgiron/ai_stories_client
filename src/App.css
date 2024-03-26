@@ -16,6 +16,14 @@
   grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
 }
 
+.GridLayout {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
+  gap: 1rem;
+  max-width: 1000px;
+  width: 100%;
+}
+
 .BodyContainer {
   display: grid;
   grid-template-areas:

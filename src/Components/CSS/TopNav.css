@@ -4,27 +4,19 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
   width: 100vw;
   padding-top: 1rem;
-
-  display: grid;
-  grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
-  grid-template-areas: ". navContainer navContainer navContainer .";
-  z-index: 10;
-  align-content: center;
-  /* background-color: red; */
-  /* mix-blend-mode: multiply; */
 }
 
 #TopNavContainer {
-  grid-area: navContainer;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  grid-template-areas: "Logo . . . NavMenu";
 }
 
 #TopNav #Logo {
+  grid-area: Logo;
   display: flex;
   align-items: center;
   color: var(--color-main);
@@ -36,9 +28,10 @@
   font-weight: 450;
 }
 
-#TopNav .Menu {
+#TopNav #NavMenu {
+  grid-area: NavMenu;
   position: relative;
-  grid-area: Menu;
+
   justify-self: flex-end;
 
   width: 40px;
@@ -50,7 +43,7 @@
   transform: rotate(90deg);
 }
 
-#TopNav .Menu .Menu-Line {
+#TopNav #NavMenu .Menu-Line {
   position: absolute;
   width: 1px;
   height: 20px;
@@ -61,46 +54,46 @@
   transition: all 200ms;
 }
 
-#TopNav .Menu .Menu-Line.Top {
+#TopNav #NavMenu .Menu-Line.Top {
   top: 50%;
   left: 35%;
   transform: translate(-50%, -50%);
 }
 
-#TopNav .Menu .Menu-Line.Center {
+#TopNav #NavMenu .Menu-Line.Center {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-#TopNav .Menu .Menu-Line.Bottom {
+#TopNav #NavMenu .Menu-Line.Bottom {
   top: 50%;
   left: 65%;
   transform: translate(-50%, -50%);
 }
 
-#TopNav .Menu.Active {
+#TopNav #NavMenu.Active {
   transform: rotate(0deg);
 }
 
-#TopNav .Menu.Active .Menu-Line.Top {
+#TopNav #NavMenu.Active .Menu-Line.Top {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
-#TopNav .Menu.Active .Menu-Line.Center {
+#TopNav #NavMenu.Active .Menu-Line.Center {
   opacity: 0;
   width: 0;
 }
 
-#TopNav .Menu.Active .Menu-Line.Bottom {
+#TopNav #NavMenu.Active .Menu-Line.Bottom {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-#TopNav .Menu .LinksList {
+#TopNav #NavMenu .LinksList {
   position: absolute;
   text-decoration: none;
   top: 1rem;
@@ -113,11 +106,11 @@
   pointer-events: none;
 }
 
-#TopNav .Menu:not(.Active) .LinksList {
+#TopNav #NavMenu:not(.Active) .LinksList {
   opacity: 0;
 }
 
-#TopNav .Menu .LinksList .NavLink {
+#TopNav #NavMenu .LinksList .NavLink {
   pointer-events: all;
   text-decoration: none;
   width: max-content;
