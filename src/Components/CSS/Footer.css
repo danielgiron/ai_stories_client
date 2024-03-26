@@ -1,9 +1,8 @@
 .FooterContainer {
-  display: grid;
-  grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
-  grid-template-areas: ". Footer Footer Footer .";
+  display: flex;
+  justify-content: center;
 }
 
 #Footer {
-  grid-area: Footer;
+  width: 100%;
 }
