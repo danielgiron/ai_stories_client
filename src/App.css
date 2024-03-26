@@ -24,31 +24,31 @@
   width: 100%;
 }
 
-.BodyContainer {
+.HomeContainer {
   display: grid;
   grid-template-areas:
     "HeroContainer"
-    "AssessmentsContainer"
+    "StoriesContainer"
     "ResultsContainer";
 }
 
 /**************************************************  */
 
-.BodyContainer .AssessmentsContainer {
-  grid-area: AssessmentsContainer;
-  grid-template-areas: ". Assessments Assessments Assessments .";
+.HomeContainer .StoriesContainer {
+  grid-area: StoriesContainer;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
   background-color: rgb(238, 238, 238);
 }
 
-.AssessmentsContainer .Assessments {
-  grid-area: Assessments;
-  height: 360px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 2rem;
+.StoriesContainer .StoryModes {
+  /* height: 360px; */
+  grid-template-areas: "StoryIntro StoryIntro Carousel Carousel Carousel";
 }
 
-.Assessments .Carousel {
+.StoryModes .Carousel {
+  grid-area: Carousel;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -76,7 +76,7 @@
   );
 }
 
-.Assessments .Carousel .Card {
+.StoryModes .Carousel .Card {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,32 +86,41 @@
   background-color: rgb(62, 74, 103);
 }
 
+.StoryModes .SectionText {
+  grid-area: StoryIntro;
+}
+
 /*****************************************  */
-.GridContainer .SectionText {
+.SectionText {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
 }
 
-.GridContainer h3 {
+.SectionText h3 {
   font-size: 1.5rem;
   letter-spacing: 5px;
 }
 
-.GridContainer h3 span {
+.SectionText h3 span {
   font-weight: 550;
 }
 /*****************************************  */
 
-.BodyContainer .ResultsContainer {
+.HomeContainer .ResultsContainer {
   grid-area: ResultsContainer;
-  grid-template-areas: ". Results Results Results .";
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .ResultsContainer .Results {
   grid-area: Results;
-  padding: 5rem 0rem;
+}
+
+.Results .SectionText p {
+  max-width: 1000px;
 }
 
 .ResultEntryContainer {
@@ -124,12 +133,13 @@
 
 .ResultEntry {
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-areas: "EntryDesc EntryDesc EntryDesc EntryDesc EntryButton";
   gap: 1rem;
   height: 3rem;
 }
 
 .ResultEntryName {
+  grid-area: EntryDesc;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -147,6 +157,7 @@
 }
 
 .ResultEntry button {
+  grid-area: EntryButton;
   font-size: 1rem;
   font-family: LeagueSpartan;
   border: none;
@@ -172,11 +183,11 @@
 
   /*****************************************  */
 
-  .BodyContainer .AssessmentsContainer {
-    grid-template-areas: "Assessments";
+  .HomeContainer .StoriesContainer {
+    grid-template-areas: "StoryModes";
   }
 
-  .AssessmentsContainer .Assessments {
+  .StoriesContainer .StoryModes {
     padding: 3rem 0rem;
     height: unset;
     width: calc(100vw - 2rem);
@@ -185,7 +196,7 @@
     gap: 2rem;
   }
 
-  .Assessments .Carousel {
+  .StoryModes .Carousel {
     display: flex;
     flex-direction: row;
     width: calc(100vw - 1rem);
@@ -197,7 +208,7 @@
 
   /*****************************************  */
 
-  .BodyContainer .ResultsContainer {
+  .HomeContainer .ResultsContainer {
     grid-template-areas: "Results";
   }
 

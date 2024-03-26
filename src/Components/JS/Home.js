@@ -20,13 +20,13 @@ function Home(props) {
   // }, []);
 
   return (
-    <div className="BodyContainer">
-      <HeroSection />
-      <div className="AssessmentsContainer GridContainer">
-        <div className="Assessments">
+    <div className="HomeContainer">
+      {/* <HeroSection /> */}
+      <div className="StoriesContainer">
+        <div className="StoryModes GridLayout">
           <div className="SectionText">
             <h3>
-              The <span>Assessments</span>
+              The <span>Stories</span>
             </h3>
             <p>
               I'm a Developer who loves exploring new technologies to bring
@@ -52,7 +52,7 @@ function Home(props) {
           </div>
         </div>
       </div>
-      <div className="ResultsContainer GridContainer">
+      <div className="ResultsContainer">
         <div className="Results">
           <div className="SectionText">
             <h3>
@@ -67,7 +67,7 @@ function Home(props) {
           <div className="ResultEntryContainer">
             {SavedEntries.map((Entry, index) => {
               return (
-                <div className="ResultEntry" key={index}>
+                <div className="ResultEntry GridLayout" key={index}>
                   <div className="ResultEntryName">{`Entry No.${Entry.id}`}</div>
                   <button
                     onClick={() => {
@@ -79,7 +79,7 @@ function Home(props) {
                 </div>
               );
             })}
-            <div className="ResultEntry">
+            {/* <div className="ResultEntry">
               <div className="ResultEntryName">First Result</div>
               <button>More</button>
             </div>
@@ -90,7 +90,7 @@ function Home(props) {
             <div className="ResultEntry">
               <div className="ResultEntryName">Third Result</div>
               <button>More</button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
