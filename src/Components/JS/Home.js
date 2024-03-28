@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "../CSS/Home.css";
 import HeroSection from "./HeroSection";
 //import './Home.css'
 
@@ -22,7 +23,25 @@ function Home(props) {
   return (
     <div className="HomeContainer">
       {/* <HeroSection /> */}
-      <div className="StoriesContainer">
+      <div className="JournalContainer SectionContainer">
+        <div className="JournalSection GridLayout">
+          <div className="SectionText">
+            <h3>
+              What's on <span>Your Mind</span> Today?
+            </h3>
+            <p>
+              I'm a Developer who loves exploring new technologies to bring
+              creative solutions to life. Check out the technologies I use below
+              to see how I can help bring your ideas to life.
+            </p>
+            <div className="ButtonsContainer">
+              <button className="Primary">Start Today's Journal</button>
+              <button className="Secondary">See Previous Journals</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="StoriesContainer SectionContainer">
         <div className="StoryModes GridLayout">
           <div className="SectionText">
             <h3>
@@ -52,8 +71,8 @@ function Home(props) {
           </div>
         </div>
       </div>
-      <div className="ResultsContainer">
-        <div className="Results">
+      <div className="ResultsContainer SectionContainer">
+        <div className="Results GridLayout">
           <div className="SectionText">
             <h3>
               Your <span>Results</span>

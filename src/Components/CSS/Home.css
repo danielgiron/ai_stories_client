@@ -1,0 +1,165 @@
+.HomeContainer {
+  --theme-color1: #333b3d;
+  display: grid;
+  grid-template-areas:
+    "JournalContainer"
+    "StoriesContainer"
+    "ResultsContainer";
+}
+
+/**************************************************  */
+
+.JournalContainer {
+  height: 500px;
+  background-color: #212223;
+}
+
+.JournalSection {
+  grid-template-areas: "JournalIntro JournalIntro . . .";
+}
+
+.JournalSection .SectionText {
+  grid-area: JournalIntro;
+}
+
+.JournalSection .ButtonsContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.JournalSection button.Primary,
+.JournalSection button.Secondary {
+  padding: 1rem;
+  border: none;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.JournalSection button.Primary {
+  background-color: #c2dddf;
+}
+.JournalSection button.Secondary {
+  color: #e3e3e3;
+}
+
+/**************************************************  */
+
+.HomeContainer .StoriesContainer {
+  grid-area: StoriesContainer;
+  background-color: #1a1c1e;
+}
+
+.StoriesContainer .StoryModes {
+  grid-template-areas: "StoryIntro StoryIntro Carousel Carousel Carousel";
+}
+
+.StoryModes .Carousel {
+  grid-area: Carousel;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 1rem;
+  gap: 1rem;
+  overflow-x: scroll;
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.665) 3%,
+    black 5%,
+    black 95%,
+    rgba(0, 0, 0, 0.656) 97%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.665) 3%,
+    black 5%,
+    black 95%,
+    rgba(0, 0, 0, 0.656) 97%,
+    transparent 100%
+  );
+}
+
+.StoryModes .Carousel .Card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  min-width: 270px;
+  border-radius: 0.5rem;
+  background-color: var(--theme-color1);
+}
+
+.StoryModes .SectionText {
+  grid-area: StoryIntro;
+  align-self: start;
+}
+
+/*****************************************  */
+
+.ResultsContainer {
+  grid-area: ResultsContainer;
+  background-color: #212223;
+}
+
+.ResultsContainer .Results {
+  grid-area: Results;
+  grid-template-areas:
+    "ResultsText ResultsText ResultsText ResultsText ResultsText"
+    "ResultsContainer ResultsContainer ResultsContainer ResultsContainer ResultsContainer";
+}
+
+.Results .SectionText {
+  grid-area: ResultsText;
+}
+
+.ResultEntryContainer {
+  grid-area: ResultsContainer;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  filter: drop-shadow(0px 5px 10px #192022);
+}
+
+.ResultEntry {
+  display: grid;
+  grid-template-areas: "EntryDesc EntryDesc EntryDesc EntryDesc EntryButton";
+  gap: 1rem;
+  height: 3rem;
+}
+
+.ResultEntryName {
+  grid-area: EntryDesc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 1rem;
+  height: 100%;
+
+  border-radius: 0.5rem;
+  background-color: #333f42;
+
+  color: var(--theme-color1);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ResultEntry button {
+  grid-area: EntryButton;
+  font-size: 1rem;
+  font-family: LeagueSpartan;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--theme-color1);
+  cursor: pointer;
+}
+
+.ResultEntry button:hover {
+  filter: brightness(1.03);
+}
