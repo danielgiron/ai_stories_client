@@ -15,7 +15,7 @@
 }
 
 .JournalSection {
-  grid-template-areas: "JournalIntro JournalIntro . . .";
+  grid-template-areas: "JournalIntro JournalIntro JournalIntro . .";
 }
 
 .JournalSection .SectionText {

@@ -1,0 +1,276 @@
+.LandingContainer {
+  --theme-color1: #333b3d;
+  display: grid;
+  grid-template-areas:
+    "JournalContainer"
+    "AboutContainer"
+    "AuthContainer";
+}
+
+/**************************************************  */
+
+.HeroContainer {
+  height: 500px;
+  background-color: #1a1c1e;
+  overflow-y: hidden;
+}
+
+.HeroSection {
+  position: relative;
+  grid-template-areas: "HeroText HeroText HeroText . .";
+}
+
+.HeroSection .HeroImageContainer {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 66%;
+  height: 100%;
+  z-index: 0;
+  background-image: radial-gradient(
+    circle at calc(100% - 250px) center,
+    #a8f1f6bd 0px,
+    #85cfe592 75px,
+    #a8f1f646 150px,
+    #a8f1f600 250px
+  );
+  -webkit-filter: blur(50px);
+  -moz-filter: blur(50px);
+  filter: blur(50px);
+}
+.HeroSection .SectionText {
+  grid-area: HeroText;
+  z-index: 1;
+}
+
+.HeroSection .ButtonsContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.HeroSection button.Primary,
+.HeroSection button.Secondary {
+  padding: 1rem;
+  border: none;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.HeroSection button.Primary {
+  background-color: #c2dddf;
+}
+.HeroSection button.Secondary {
+  color: #e3e3e3;
+}
+
+/**************************************************  */
+
+.LandingContainer .AboutContainer {
+  grid-area: AboutContainer;
+  background-color: #212223;
+}
+
+.AboutContainer .AboutSection {
+  grid-template-columns: 1fr;
+}
+
+.AboutContainer .AboutPanels {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem 0rem;
+}
+
+.AboutPanels .Panel {
+  display: grid;
+  grid-template-areas: "PanelTitle PanelCard" "PanelText PanelCard";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.AboutPanels .Panel:nth-child(2) {
+  grid-template-areas: "PanelCard PanelTitle" "PanelCard PanelText";
+}
+
+.Panel h4 {
+  grid-area: PanelTitle;
+  align-self: start;
+  max-width: 400px;
+}
+
+.Panel p {
+  grid-area: PanelText;
+  align-self: start;
+  max-width: 400px;
+}
+
+.Panel .Card {
+  grid-area: PanelCard;
+  background-color: #333f42;
+  height: 180px;
+  width: 400px;
+
+  border-radius: 0.5rem;
+
+  background-color: var(--theme-color1);
+}
+
+/*****************************************  */
+
+.ResultsContainer {
+  grid-area: ResultsContainer;
+  background-color: #212223;
+}
+
+.ResultsContainer .Results {
+  grid-area: Results;
+  grid-template-areas:
+    "ResultsText ResultsText ResultsText ResultsText ResultsText"
+    "ResultsContainer ResultsContainer ResultsContainer ResultsContainer ResultsContainer";
+}
+
+.Results .SectionText {
+  grid-area: ResultsText;
+}
+
+.ResultEntryContainer {
+  grid-area: ResultsContainer;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  filter: drop-shadow(0px 5px 10px #192022);
+}
+
+.ResultEntry {
+  display: grid;
+  grid-template-areas: "EntryDesc EntryDesc EntryDesc EntryDesc EntryButton";
+  gap: 1rem;
+  height: 3rem;
+}
+
+.ResultEntryName {
+  grid-area: EntryDesc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 1rem;
+  height: 100%;
+
+  border-radius: 0.5rem;
+  background-color: #333f42;
+
+  color: var(--theme-color1);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ResultEntry button {
+  grid-area: EntryButton;
+  font-size: 1rem;
+  font-family: LeagueSpartan;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--theme-color1);
+  cursor: pointer;
+}
+
+.ResultEntry button:hover {
+  filter: brightness(1.03);
+}
+
+/**************************************************  */
+
+.LandingContainer .AuthContainer {
+  grid-area: AuthContainer;
+  background-color: #1a1c1e;
+}
+
+.AuthContainer .AuthSection {
+  grid-template-columns: 1fr;
+}
+
+.AuthSection .AuthModule {
+  display: grid;
+  grid-template-areas: "SignUp SignIn" "DemoLink DemoLink";
+  gap: 1rem;
+}
+
+.SignInContainer {
+  grid-area: SignIn;
+}
+
+.SignUpContainer {
+  grid-area: SignUp;
+}
+
+.AuthContainer .DemoLink {
+  grid-area: DemoLink;
+  text-align: center;
+  font-weight: 500;
+  color: #e3e3e3;
+  text-decoration: none;
+}
+
+.AuthModule .SignUpContainer,
+.AuthModule .SignInContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #333f42;
+  border-radius: 0.5rem;
+}
+
+.AuthModule .FormTitle {
+  padding: 1rem;
+  font-weight: 450;
+  text-align: center;
+}
+
+.SignInContainer form,
+.SignUpContainer form {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+  padding: 1rem;
+  padding-bottom: 6rem;
+}
+
+.AuthModule .inputField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.AuthModule .inputField input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+
+  font-size: 0.9rem;
+  font-family: LeagueSpartan;
+  color: #e3e3e3;
+  background-color: #677b80;
+}
+
+.AuthModule form button {
+  position: absolute;
+  bottom: 1rem;
+  width: calc(100% - 2rem);
+  background-color: #c2dddf;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 450;
+}
