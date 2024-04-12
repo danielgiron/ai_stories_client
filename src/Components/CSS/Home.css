@@ -10,12 +10,28 @@
 /**************************************************  */
 
 .JournalContainer {
+  position: relative;
+
   height: 500px;
   background-color: #212223;
 }
 
 .JournalSection {
   grid-template-areas: "JournalIntro JournalIntro JournalIntro . .";
+}
+
+.JournalSection .GradientLayer {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  height: 60%;
+  width: 100%;
+  transform: translateX(-50%);
+
+  background-image: radial-gradient(#a8f1f6bd 0%, #d0ea5009 80%);
+  filter: blur(100px);
+  -webkit-filter: blur(100px);
+  -moz-filter: blur(100px);
 }
 
 .JournalSection .SectionText {

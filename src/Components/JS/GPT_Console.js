@@ -115,17 +115,17 @@ function GPT_Console(props) {
 
   useEffect(() => {
     // Change TopNav styles to fit GPT_Console Theme
-    const Logo = document.getElementById("Logo");
-    const Menu = document.querySelector(".Menu");
-    const MenuLines = document.querySelectorAll(".Menu-Line");
+    // const Logo = document.getElementById("Logo");
+    // const Menu = document.querySelector(".Menu");
+    // const MenuLines = document.querySelectorAll(".Menu-Line");
 
-    Logo.style.color = "white";
-    Menu.style.border = "1px solid white";
+    // Logo.style.color = "white";
+    // Menu.style.border = "1px solid white";
 
-    MenuLines.forEach((line) => {
-      line.style.backgroundColor = "white";
-      line.style.border = " 1px solid white";
-    });
+    // MenuLines.forEach((line) => {
+    //   line.style.backgroundColor = "white";
+    //   line.style.border = " 1px solid white";
+    // });
 
     // If EntryID has been passed through URL Params, load messages from localStorage
     if (localStorage.getItem(EntryID)) {
@@ -134,15 +134,15 @@ function GPT_Console(props) {
     }
 
     // Return TopNav colors to original theme
-    return () => {
-      Logo.style.color = "black";
-      Menu.style.border = "1px solid black";
+    // return () => {
+    //   Logo.style.color = "black";
+    //   Menu.style.border = "1px solid black";
 
-      MenuLines.forEach((line) => {
-        line.style.backgroundColor = "black";
-        line.style.border = "1px solid black";
-      });
-    };
+    //   MenuLines.forEach((line) => {
+    //     line.style.backgroundColor = "black";
+    //     line.style.border = "1px solid black";
+    //   });
+    // };
   }, []);
 
   return (

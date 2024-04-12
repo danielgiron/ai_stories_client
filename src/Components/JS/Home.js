@@ -38,6 +38,10 @@ function Home(props) {
               <button className="Primary">Start Today's Journal</button>
               <button className="Secondary">See Previous Journals</button>
             </div>
+            <div className="LandingImageContainer">
+              <img />
+              <div className="GradientLayer" />
+            </div>
           </div>
         </div>
       </div>

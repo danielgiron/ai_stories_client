@@ -179,7 +179,13 @@ function Landing(props) {
                 <button>Sign In</button>
               </form>
             </div>
-            <Link className="DemoLink" to="/Home">
+            <Link
+              className="DemoLink"
+              to="/Home"
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
+            >
               Try the Demo Instead
             </Link>
           </div>
