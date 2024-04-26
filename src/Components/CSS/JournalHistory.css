@@ -1,0 +1,43 @@
+.JH_Container {
+  background-color: #212223;
+  display: grid;
+  grid-template-areas:
+    "CalendarContainer"
+    "HistoryContainer";
+}
+
+.JH_Container .CalendarContainer {
+  grid-area: CalendarContainer;
+}
+
+.JH_Container .Calendar {
+  background-color: red;
+  padding-top: 2rem;
+}
+
+.JH_Container .Calendar .CalendarGrid {
+  height: 400px;
+  aspect-ratio: 7/5;
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.Calendar .CalendarRow {
+  border: 1px solid green;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.CalendarRow .CalendarCell {
+  border: 1px solid gold;
+  width: 100%;
+}
+
+.JH_Container .HistoryListContainer {
+  grid-area: HistoryContainer;
+  background-color: #1a1c1e;
+}

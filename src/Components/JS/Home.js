@@ -36,7 +36,14 @@ function Home(props) {
             </p>
             <div className="ButtonsContainer">
               <button className="Primary">Start Today's Journal</button>
-              <button className="Secondary">See Previous Journals</button>
+              <button
+                className="Secondary"
+                onClick={() => {
+                  navigate("/JournalHistory");
+                }}
+              >
+                See Previous Journals
+              </button>
             </div>
             <div className="LandingImageContainer">
               <img />
