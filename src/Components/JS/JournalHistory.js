@@ -1,6 +1,7 @@
 import React from "react";
 import "../CSS/JournalHistory.css";
 import { useState, useEffect } from "react";
+import Caret from "../../Media/Images/caret.svg";
 
 function JournalHistory(props) {
   // State for the current month and year, and array representing values of each cell in a calendar
@@ -43,12 +44,39 @@ function JournalHistory(props) {
 
   function fillCalendar(month, year) {
     const days = getDaysInMonth(month, year);
-    const firstDay = days[0].getDay(); // Determine what day of the week a given month starts on...
+    const firstDay = days[0].getDay(); // Determine what day of the week a given month starts on (offset)
     const calendarCells = Array(42).fill(null); // Create a temporary array to hold all possible dates
     days.forEach((day, index) => {
       calendarCells[firstDay + index] = day.getDate(); // Start adding dates after initial offset
     });
     return calendarCells;
+  }
+
+  function calculateNewMonth(action, currentMonth, currentYear) {
+    let newMonth;
+    let newYear = currentYear;
+
+    if (action === "next") {
+      if (currentMonth === 11) {
+        // December to January
+        newMonth = 0;
+        newYear = currentYear + 1;
+      } else {
+        newMonth = currentMonth + 1;
+      }
+    } else if (action === "prev") {
+      if (currentMonth === 0) {
+        // January to December
+        newMonth = 11;
+        newYear = currentYear - 1;
+      } else {
+        newMonth = currentMonth - 1;
+      }
+    } else {
+      throw new Error("Invalid action: Use 'next' or 'prev'.");
+    }
+
+    return { newMonth, newYear };
   }
 
   //   When either month or year are changed, update the calendar grid
@@ -61,7 +89,25 @@ function JournalHistory(props) {
       <div className="CalendarContainer SectionContainer">
         <div className="Calendar">
           <div className="CalendarControls">
-            <select value={monthNames[month]} onChange={handleMonthChange}>
+            <button
+              id="MinusMonth"
+              onClick={() => {
+                const { newMonth, newYear } = calculateNewMonth(
+                  "prev",
+                  month,
+                  year
+                );
+                setMonth(newMonth);
+                setYear(newYear);
+              }}
+            >
+              <img src={Caret} />
+            </button>
+            <select
+              id="MonthSelect"
+              value={monthNames[month]}
+              onChange={handleMonthChange}
+            >
               {monthNames.map((name, index) => {
                 return (
                   <option key={index} value={name}>
@@ -70,7 +116,26 @@ function JournalHistory(props) {
                 );
               })}
             </select>
-            <input type="number" value={year} onChange={handleYearChange} />
+            <input
+              id="YearSelect"
+              type="number"
+              value={year}
+              onChange={handleYearChange}
+            />
+            <button
+              id="PlusMonth"
+              onClick={() => {
+                const { newMonth, newYear } = calculateNewMonth(
+                  "next",
+                  month,
+                  year
+                );
+                setMonth(newMonth);
+                setYear(newYear);
+              }}
+            >
+              <img src={Caret} />
+            </button>
           </div>
           <div className="CalendarGrid">
             {/* Generate a 7x6 Grid to represent a full calendar grid, each row and cell uniquely indexed */}
@@ -93,7 +158,7 @@ function JournalHistory(props) {
                   }
                 >
                   {Array.from({ length: 7 }).map((_, cellIndex) => {
-                    // 7 days of the week
+                    // length 7 for days of the week
                     const key = rowIndex * 7 + cellIndex;
                     return (
                       <div className="CalendarCell" key={key}>
