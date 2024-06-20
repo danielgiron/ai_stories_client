@@ -1,0 +1,93 @@
+.JH_Container .CalendarContainer {
+  grid-area: CalendarContainer;
+}
+
+.JH_Container .Calendar {
+  padding-top: 2rem;
+}
+
+.JH_Container .Calendar .CalendarControls {
+  display: grid;
+  grid-template-areas: "MinusBtn . MonthInput YearInput . PlusBtn";
+  grid-template-columns: 3rem 1fr auto auto 1fr 3rem;
+}
+
+#MinusMonth {
+  grid-area: MinusBtn;
+}
+
+#MonthSelect {
+  grid-area: MonthInput;
+  direction: rtl;
+  padding-right: 0.5rem;
+}
+
+#YearSelect {
+  grid-area: YearInput;
+}
+
+#PlusMonth {
+  grid-area: PlusBtn;
+}
+
+.CalendarControls select,
+.CalendarControls input[type="number"],
+.CalendarControls button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  font-family: inherit;
+  color: inherit;
+  font-size: 100%; /* Use font size of the parent element */
+  background: none;
+}
+
+.CalendarControls select {
+  width: 5rem;
+}
+
+.CalendarControls input {
+  text-align: left;
+  width: 5rem;
+}
+
+.CalendarControls button img {
+  height: 1.5rem;
+  aspect-ratio: 1/1;
+}
+
+.CalendarControls #MinusMonth img {
+  transform: rotate(180deg);
+}
+
+.JH_Container .Calendar .CalendarGrid {
+  height: 400px;
+  aspect-ratio: 7/5;
+  display: flex;
+  flex-direction: column;
+  /* padding: 1rem; */
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.Calendar .CalendarRow {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.CalendarRow .CalendarCell {
+  border-left: 1px solid #eee;
+  border-top: 1px solid #eee;
+  width: 100%;
+}
+
+.CalendarRow .CalendarCell .Date {
+  display: block;
+  padding: 0.25rem;
+  /* background-color: red; */
+}
